@@ -4,7 +4,7 @@ class Recommendation {
   Recommendation({this.name, this.source, this.text});
 }
 
-final List<Recommendation> demo_recommendations = [
+final List<Recommendation> demoRecommendations = [
   Recommendation(
     name: "Kolapo Obanewa",
     source: "Linkedin",
