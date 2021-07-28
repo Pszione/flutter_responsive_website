@@ -23,7 +23,9 @@ class MainScreen extends StatelessWidget {
                       child: Container(
                         color: Color(0xFF242430),
                         child: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
+                            const Spacer(flex: 2),
                             const CircleAvatar(
                               radius: 50,
                               backgroundImage: AssetImage(
@@ -38,9 +40,10 @@ class MainScreen extends StatelessWidget {
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontWeight: FontWeight.w200,
-                                height: 1.5,
+                                height: kTextHeightSpacing,
                               ),
                             ),
+                            const Spacer(flex: 2),
                           ],
                         ),
                       ),
