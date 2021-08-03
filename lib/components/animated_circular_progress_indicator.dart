@@ -19,7 +19,8 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
         AspectRatio(
           aspectRatio: 1,
           child: TweenAnimationBuilder(
-            tween: Tween<double>(begin: 0, end: percentage),
+            tween:
+                Tween<double>(begin: 0, end: percentage / 100), // 35% to double
             duration: kDefaultDuration,
             builder: (context, double value, child) => Stack(
               //
@@ -32,7 +33,7 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
                 ),
                 Center(
                   child: Text(
-                    (value /* * 100*/).toInt().toString() + '%',
+                    (value * 100).toInt().toString() + '%',
                     style: Theme.of(context).textTheme.subtitle1,
                   ),
                 ),
