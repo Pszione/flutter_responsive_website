@@ -10,31 +10,34 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        constraints: const BoxConstraints(maxHeight: kMaxWebsiteWidth),
-        child: Row(
-          children: <Widget>[
-            const Expanded(
-              // Now this take (2+7=9) so 2/9=0.22 means 22%
-              // flex: 2,
-              flex: 3, // 27%
-              child: SideMenuWithAvatar(),
-            ),
-            const SizedBox(width: kDefaultPadding / 2.3),
-            Expanded(
-              // Now this take (7/9=0.78) means 78% width
-              // flex: 7,
-              flex: 8,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ...children,
-                    // then our footer
-                  ],
+      body: Center(
+        child: Container(
+          constraints: const BoxConstraints(maxHeight: kMaxWebsiteWidth),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Expanded(
+                // Now this take (2+7=9) so 2/9=0.22 means 22%
+                // flex: 2,
+                flex: 3, // 27%
+                child: SideMenuWithAvatar(),
+              ),
+              const SizedBox(width: kDefaultPadding / 2.3),
+              Expanded(
+                // Now this take (7/9=0.78) means 78% width
+                // flex: 7,
+                flex: 8,
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ...children,
+                      // then our footer
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
