@@ -20,6 +20,7 @@ class MainScreen extends StatelessWidget {
               flex: 3, // 27%
               child: SideMenuWithAvatar(),
             ),
+            const SizedBox(width: kDefaultPadding / 2.3),
             Expanded(
               // Now this take (7/9=0.78) means 78% width
               // flex: 7,
