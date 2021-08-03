@@ -19,7 +19,7 @@ class HomeScreen extends StatelessWidget {
               'assets/images/bg.jpeg',
               fit: BoxFit.cover,
             ),
-            Container(color: kDarkColor.withOpacity(0.60)), // fader
+            Container(color: kDarkColor.withOpacity(0.60)), // Fader
             Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5),
@@ -32,9 +32,17 @@ class HomeScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline3!.copyWith(
                         fontWeight: FontWeight.bold, color: kTextWhiteColor),
                   ),
+                  AnimatedTextKit(
+                    animatedTexts: [
+                      TyperAnimatedText('responsive web and mobile app.'),
+                      TyperAnimatedText('complete e-Commerce app UI.'),
+                      TyperAnimatedText('Chat app with dark and light theme.'),
+                      TyperAnimatedText('Self taught in Flutter.'),
+                    ],
+                  ),
                 ],
               ),
-            ) // ader
+            ),
           ],
         ),
       ),
