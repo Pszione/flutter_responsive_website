@@ -30,7 +30,9 @@ class HomeHeaderBanner extends StatelessWidget {
                 Text(
                   'Discover my Amazing \nArt Space!',
                   style: Theme.of(context).textTheme.headline3!.copyWith(
-                      fontWeight: FontWeight.bold, color: kTextWhiteColor),
+                      fontWeight: FontWeight.bold,
+                      color: kTextWhiteColor,
+                      height: 1),
                 ),
                 FlutterKnowledgeAnimatedText(),
                 const SizedBox(height: kDefaultPadding),
@@ -47,7 +49,8 @@ class HomeHeaderBanner extends StatelessWidget {
                     'EXPLORE NOW',
                     style: TextStyle(color: kDarkColor),
                   ),
-                )
+                ),
+                const SizedBox(height: kDefaultPadding / 3),
               ],
             ),
           ),
