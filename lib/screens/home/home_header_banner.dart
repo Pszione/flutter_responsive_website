@@ -32,7 +32,7 @@ class HomeHeaderBanner extends StatelessWidget {
                   style: Theme.of(context).textTheme.headline3!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: kTextWhiteColor,
-                      height: 1),
+                      height: kTextSmallHeightSpacing),
                 ),
                 FlutterKnowledgeAnimatedText(),
                 const SizedBox(height: kDefaultPadding),

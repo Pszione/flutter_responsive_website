@@ -32,7 +32,7 @@ class UserInfoWithAvatar extends StatelessWidget {
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontWeight: FontWeight.w200,
-                height: kTextHeightSpacing,
+                height: kTextHighHeightSpacing,
               ),
             ),
             const Spacer(flex: 2),
