@@ -13,81 +13,85 @@ class SideMenuWithAvatar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Column(
-        children: <Widget>[
-          UserInfoWithAvatar(),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(kDefaultPadding),
-              child: Column(
-                children: [
-                  // SizedBox(height: kDefaultPadding / 2),
-                  TextButton(
-                    onPressed: () {},
-                    child: FittedBox(
+      child: SafeArea(
+        child: Column(
+          children: <Widget>[
+            const UserInfoWithAvatar(),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(kDefaultPadding),
+                child: Column(
+                  children: [
+                    // SizedBox(height: kDefaultPadding / 2),
+                    TextButton(
+                      onPressed: () {},
+                      child: FittedBox(
+                        child: Row(
+                          children: [
+                            Text(
+                              'DOWNLOAD CV',
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .color!,
+                              ),
+                            ),
+                            const SizedBox(width: kDefaultPadding / 2),
+                            SvgPicture.asset(
+                              'assets/icons/download.svg',
+                              color: Colors.orange,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Container(
+                      margin: const EdgeInsets.only(top: kDefaultPadding / 2),
+                      color: const Color(0xFF24242E),
                       child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text(
-                            'DOWNLOAD CV',
-                            style: TextStyle(
-                              color:
-                                  Theme.of(context).textTheme.bodyText1!.color!,
+                          const Spacer(),
+                          IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              'assets/icons/linkedin.svg',
                             ),
                           ),
-                          const SizedBox(width: kDefaultPadding / 2),
-                          SvgPicture.asset(
-                            'assets/icons/download.svg',
-                            color: Colors.orange,
+                          IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              'assets/icons/github.svg',
+                            ),
                           ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: SvgPicture.asset(
+                              'assets/icons/twitter.svg',
+                            ),
+                          ),
+                          const Spacer(),
                         ],
                       ),
                     ),
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: kDefaultPadding / 2),
-                    color: const Color(0xFF24242E),
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        const Spacer(),
-                        IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                            'assets/icons/linkedin.svg',
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                            'assets/icons/github.svg',
-                          ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: SvgPicture.asset(
-                            'assets/icons/twitter.svg',
-                          ),
-                        ),
-                        const Spacer(),
-                      ],
-                    ),
-                  ),
-                  const Divider(),
-                  SizedBox(height: kDefaultPadding),
-                  AreaInfoText(title: 'Living at', text: 'Brazil'),
-                  AreaInfoText(title: 'City', text: 'Brasília'),
-                  AreaInfoText(title: 'Age', text: '24'),
-                  AreaInfoText(title: 'Are you happy?', text: 'For sure!!'),
-                  SkillsIndicators(),
-                  SizedBox(height: kDefaultPadding),
-                  CodingIndicators(),
-                  KnowledgesIndicators(),
-                  SizedBox(height: kDefaultPadding),
-                ],
+                    const Divider(),
+                    const SizedBox(height: kDefaultPadding),
+                    AreaInfoText(title: 'Living at', text: 'Brazil'),
+                    AreaInfoText(title: 'City', text: 'Brasília'),
+                    AreaInfoText(title: 'Age', text: '24'),
+                    AreaInfoText(title: 'Are you happy?', text: 'For sure!!'),
+                    SkillsIndicators(),
+                    const SizedBox(height: kDefaultPadding),
+                    CodingIndicators(),
+                    KnowledgesIndicators(),
+                    const SizedBox(height: kDefaultPadding),
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -111,11 +115,11 @@ class KnowledgesIndicators extends StatelessWidget {
             style: Theme.of(context).textTheme.subtitle2,
           ),
         ),
-        KnowledgeText(text: 'GIT Knowledge'),
-        KnowledgeText(text: 'Flutter, Dart'),
-        KnowledgeText(text: 'Figma UI/UX'),
-        KnowledgeText(text: 'Unity 3D (game dev)'),
-        KnowledgeText(text: 'C#'),
+        const KnowledgeText(text: 'GIT Knowledge'),
+        const KnowledgeText(text: 'Flutter, Dart'),
+        const KnowledgeText(text: 'Figma UI/UX'),
+        const KnowledgeText(text: 'Unity 3D (game dev)'),
+        const KnowledgeText(text: 'C#'),
       ],
     );
   }
