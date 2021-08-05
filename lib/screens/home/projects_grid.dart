@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_website/models/project.dart';
 
 import '../../constants.dart';
+import '../../responsive.dart';
 
 class UserProjectsGrid extends StatelessWidget {
   const UserProjectsGrid({
@@ -18,20 +19,49 @@ class UserProjectsGrid extends StatelessWidget {
           style: Theme.of(context).textTheme.headline6,
         ),
         const SizedBox(height: kDefaultPadding),
-        GridView.builder(
-          itemCount: demoProjects.length,
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3,
-              childAspectRatio: 1.3,
-              crossAxisSpacing: kDefaultPadding,
-              mainAxisSpacing: kDefaultPadding),
-          itemBuilder: (BuildContext context, int index) => ProjectCard(
-            project: demoProjects[index],
+        // really interesting responsive structure
+        const Responsive(
+          mobile: ProjectsGridView(
+            crossAxisCount: 1,
+            childAspectRatio: 1.8,
           ),
+          mobileLarge: ProjectsGridView(
+            crossAxisCount: 2,
+          ),
+          tablet: ProjectsGridView(
+            childAspectRatio: 1.1,
+          ),
+          desktop: ProjectsGridView(),
         ),
       ],
+    );
+  }
+}
+
+class ProjectsGridView extends StatelessWidget {
+  const ProjectsGridView({
+    Key? key,
+    this.crossAxisCount = 3,
+    this.childAspectRatio = 1.3,
+  }) : super(key: key);
+
+  final int crossAxisCount;
+  final double childAspectRatio;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      itemCount: demoProjects.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: crossAxisCount,
+          childAspectRatio: childAspectRatio,
+          crossAxisSpacing: kDefaultPadding,
+          mainAxisSpacing: kDefaultPadding),
+      itemBuilder: (BuildContext context, int index) => ProjectCard(
+        project: demoProjects[index],
+      ),
     );
   }
 }
@@ -61,7 +91,7 @@ class ProjectCard extends StatelessWidget {
           const Spacer(),
           Text(
             project.description!,
-            maxLines: 4,
+            maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               height: 1.35,
