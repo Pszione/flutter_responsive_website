@@ -17,11 +17,16 @@ class MainScreen extends StatelessWidget {
           ? null
           : AppBar(
               // backgroundColor: kBackgroundColor,
-              leading: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.menu),
+              leading: Builder(
+                builder: (BuildContext context) => IconButton(
+                  onPressed: () {
+                    Scaffold.of(context).openDrawer();
+                  },
+                  icon: const Icon(Icons.menu),
+                ),
               ),
             ),
+      drawer: const SideMenuWithAvatar(),
       body: Center(
         child: Container(
           constraints: const BoxConstraints(maxHeight: kMaxWebsiteWidth),
