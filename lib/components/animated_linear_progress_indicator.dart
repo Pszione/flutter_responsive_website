@@ -28,14 +28,12 @@ class AnimatedLinearProgressIndicator extends StatelessWidget {
                   title!,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(color: Colors.white),
                 ),
                 Text((value * 100).toInt().toString() + '%'),
               ],
             ),
-            const SizedBox(height: kDefaultPadding / 2),
+            const SizedBox(height: kHalfPadding),
             LinearProgressIndicator(
               //
               value: value,

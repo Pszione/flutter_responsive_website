@@ -25,11 +25,11 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)
             .apply(bodyColor: Colors.white)
             .copyWith(
-              bodyText1: TextStyle(color: kTextBodyColor),
-              bodyText2: TextStyle(color: kTextBodyColor),
+              bodyText1: const TextStyle(color: kTextBodyColor),
+              bodyText2: const TextStyle(color: kTextBodyColor),
             ),
       ),
-      home: HomeScreen(),
+      home: const HomeScreen(),
       // home: MainScreen(
       //   children: [
       //     FittedBox(

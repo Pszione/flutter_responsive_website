@@ -35,7 +35,7 @@ class HighlightNumbersIndicators extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(width: kDefaultPadding * 1.5),
+                const SizedBox(width: kHugePadding),
                 Expanded(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -99,7 +99,7 @@ class HighlightNumber extends StatelessWidget {
     return Row(
       children: [
         counterText,
-        const SizedBox(width: kDefaultPadding / 2),
+        const SizedBox(width: kHalfPadding),
         Text(
           label!,
           style: Theme.of(context).textTheme.subtitle2,

@@ -13,30 +13,35 @@ class UserInfoWithAvatar extends StatelessWidget {
       aspectRatio: 1.23,
       child: Container(
         color: Color(0xFF242430),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            const Spacer(flex: 2),
-            const CircleAvatar(
-              radius: 50,
-              backgroundImage:
-                  AssetImage('assets/images/35244548_pedro_santos.png'),
-            ),
-            // const Spacer(),
-            Text(
-              'Pedro Santos',
-              style: Theme.of(context).textTheme.subtitle2,
-            ),
-            const Text(
-              'Learning Flutter (by Google) | mobile developer/game developer | \nCurious for the unknown',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontWeight: FontWeight.w200,
-                height: kTextHighHeightSpacing,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              const Spacer(flex: 2),
+              const CircleAvatar(
+                radius: 50,
+                backgroundImage:
+                    AssetImage('assets/images/35244548_pedro_santos.png'),
               ),
-            ),
-            const Spacer(flex: 2),
-          ],
+              // const Spacer(),
+              Text(
+                'Pedro Santos',
+                maxLines: 2,
+                textAlign: TextAlign.center,
+                style: Theme.of(context).textTheme.subtitle2,
+              ),
+              const Text(
+                'Learning Flutter (by Google) | mobile developer/game developer | \nCurious for the unknown',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontWeight: FontWeight.w200,
+                  height: kTextHighHeightSpacing,
+                ),
+              ),
+              const Spacer(flex: 2),
+            ],
+          ),
         ),
       ),
     );

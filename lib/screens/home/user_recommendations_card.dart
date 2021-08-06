@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_responsive_website/models/recommendation.dart';
 
 import '../../constants.dart';
+import '../../responsive.dart';
 
 class UserRecommendations extends StatelessWidget {
   const UserRecommendations({Key? key}) : super(key: key);
@@ -48,7 +49,8 @@ class RecommendationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 400,
+      constraints: const BoxConstraints(maxHeight: 230),
+      width: Responsive.isDesktop(context) ? 400 : 300,
       padding: const EdgeInsets.all(kDefaultPadding),
       color: kTertiaryColor,
       child: Column(
@@ -56,15 +58,21 @@ class RecommendationCard extends StatelessWidget {
         children: [
           Text(
             recommendation.name!,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.subtitle1!,
           ),
-          Text(recommendation.source!),
+          Text(
+            recommendation.source!,
+            style:
+                Theme.of(context).textTheme.bodyText1!.copyWith(fontSize: 16),
+          ),
           const SizedBox(height: kDefaultPadding),
           Text(
             recommendation.text!,
-            maxLines: 4,
+            maxLines: 5,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(height: kTextMediumHeightSpacing),
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  height: kTextMediumHeightSpacing,
+                ),
           ),
         ],
       ),

@@ -21,77 +21,112 @@ class SideMenuWithAvatar extends StatelessWidget {
               child: SingleChildScrollView(
                 padding: const EdgeInsets.all(kDefaultPadding),
                 child: Column(
-                  children: [
-                    // SizedBox(height: kDefaultPadding / 2),
-                    TextButton(
-                      onPressed: () {},
-                      child: FittedBox(
-                        child: Row(
-                          children: [
-                            Text(
-                              'DOWNLOAD CV',
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1!
-                                    .color!,
-                              ),
-                            ),
-                            const SizedBox(width: kDefaultPadding / 2),
-                            SvgPicture.asset(
-                              'assets/icons/download.svg',
-                              color: Colors.orange,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(top: kDefaultPadding / 2),
-                      color: const Color(0xFF24242E),
-                      child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          const Spacer(),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              'assets/icons/linkedin.svg',
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              'assets/icons/github.svg',
-                            ),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: SvgPicture.asset(
-                              'assets/icons/twitter.svg',
-                            ),
-                          ),
-                          const Spacer(),
-                        ],
-                      ),
-                    ),
-                    const Divider(),
-                    const SizedBox(height: kDefaultPadding),
-                    AreaInfoText(title: 'Living at', text: 'Brazil'),
-                    AreaInfoText(title: 'City', text: 'Brasília'),
-                    AreaInfoText(title: 'Age', text: '24'),
-                    AreaInfoText(title: 'Are you happy?', text: 'For sure!!'),
+                  children: const [
+                    DownloadCurriculum(),
+                    SocialLinks(),
+                    Divider(),
+                    SizedBox(height: kDefaultPadding),
+                    UserBasicInfo(),
                     SkillsIndicators(),
-                    const SizedBox(height: kDefaultPadding),
+                    SizedBox(height: kDefaultPadding),
                     CodingIndicators(),
                     KnowledgesIndicators(),
-                    const SizedBox(height: kDefaultPadding),
+                    SizedBox(height: kDefaultPadding),
                   ],
                 ),
               ),
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class UserBasicInfo extends StatelessWidget {
+  const UserBasicInfo({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const [
+        AreaInfoText(title: 'Living at', text: 'Brazil'),
+        AreaInfoText(title: 'City', text: 'Brasília'),
+        AreaInfoText(title: 'Age', text: '24'),
+        AreaInfoText(title: 'Are you happy?', text: 'For sure!!'),
+      ],
+    );
+  }
+}
+
+class DownloadCurriculum extends StatelessWidget {
+  const DownloadCurriculum({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: () {},
+      child: FittedBox(
+        child: Row(
+          children: [
+            Text(
+              'DOWNLOAD CV',
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyText1!.color!,
+              ),
+            ),
+            const SizedBox(width: kHalfPadding),
+            SvgPicture.asset(
+              'assets/icons/download.svg',
+              color: Colors.orange,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SocialLinks extends StatelessWidget {
+  const SocialLinks({
+    Key? key,
+  }) : super(key: key);
+
+  // TODO: make the links work
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: kHalfPadding),
+      color: const Color(0xFF24242E),
+      child: Row(
+        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          const Spacer(),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/icons/linkedin.svg',
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/icons/github.svg',
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/icons/twitter.svg',
+            ),
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }
@@ -136,11 +171,11 @@ class KnowledgeText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: kDefaultPadding / 2),
+      padding: const EdgeInsets.only(bottom: kHalfPadding),
       child: Row(
         children: [
           SvgPicture.asset('assets/icons/check.svg', color: kPrimaryColor),
-          const SizedBox(width: kDefaultPadding / 2),
+          const SizedBox(width: kHalfPadding),
           Text(text),
         ],
       ),
@@ -163,7 +198,7 @@ class CodingIndicators extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
           child: Text(
             'Coding Style',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.subtitle2!,
           ),
         ),
         Column(
@@ -192,7 +227,7 @@ class SkillsIndicators extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: kDefaultPadding),
           child: Text(
             'Skills',
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.subtitle2!,
           ),
         ),
         Row(
@@ -203,17 +238,17 @@ class SkillsIndicators extends StatelessWidget {
               child: AnimatedCircularProgressIndicator(
                   title: 'Flutter', percentage: 35),
             ),
-            SizedBox(width: kDefaultPadding / 2),
+            SizedBox(width: kHalfPadding),
             Expanded(
               child: AnimatedCircularProgressIndicator(
                   title: 'Mobile Dev', percentage: 45),
             ),
-            SizedBox(width: kDefaultPadding / 2),
+            SizedBox(width: kHalfPadding),
             Expanded(
               child: AnimatedCircularProgressIndicator(
                   title: 'C#', percentage: 85),
             ),
-            SizedBox(width: kDefaultPadding / 2),
+            SizedBox(width: kHalfPadding),
             Expanded(
               child: AnimatedCircularProgressIndicator(
                   title: 'MongoDB NoSQL', percentage: 40),
@@ -237,15 +272,20 @@ class AreaInfoText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: kDefaultPadding / 2),
+      padding: const EdgeInsets.only(bottom: kHalfPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
             title!,
+            maxLines: 1,
             style: TextStyle(color: Colors.white),
           ),
-          if (text != null) Text(text!)
+          if (text != null)
+            Text(
+              text!,
+              maxLines: 1,
+            ),
         ],
       ),
     );

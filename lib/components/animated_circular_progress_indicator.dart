@@ -41,7 +41,7 @@ class AnimatedCircularProgressIndicator extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: kDefaultPadding / 2),
+        const SizedBox(height: kHalfPadding),
         Text(
           title!,
           maxLines: 1,

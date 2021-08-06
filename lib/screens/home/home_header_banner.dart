@@ -24,8 +24,8 @@ class HomeHeaderBanner extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: Responsive.isMobileLarge(context)
-                    ? kDefaultPadding / 2
-                    : kDefaultPadding * 1.5),
+                    ? kHalfPadding
+                    : kHugePadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -45,8 +45,8 @@ class HomeHeaderBanner extends StatelessWidget {
                           height: kTextSmallHeightSpacing),
                 ),
                 if (Responsive.isMobileLarge(context))
-                  const SizedBox(height: kDefaultPadding / 1.5),
-                const SizedBox(height: kDefaultPadding / 2),
+                  const SizedBox(height: kMediumPadding),
+                const SizedBox(height: kHalfPadding),
                 const FlutterKnowledgeAnimatedText(),
                 const SizedBox(height: kDefaultPadding),
                 if (!Responsive.isMobileLarge(context))
@@ -56,12 +56,12 @@ class HomeHeaderBanner extends StatelessWidget {
                       // we expand the padding if space available
                       padding: Responsive.isDesktop(context)
                           ? const EdgeInsets.symmetric(
-                              horizontal: kDefaultPadding * 2,
+                              horizontal: kHugePadding,
                               vertical: kDefaultPadding,
                             )
                           : const EdgeInsets.symmetric(
                               horizontal: kDefaultPadding,
-                              vertical: kDefaultPadding / 3,
+                              vertical: kSmallPadding,
                             ),
                       backgroundColor: kPrimaryColor,
                     ),
@@ -70,7 +70,7 @@ class HomeHeaderBanner extends StatelessWidget {
                       style: const TextStyle(color: kDarkColor),
                     ),
                   ),
-                const SizedBox(height: kDefaultPadding / 3),
+                const SizedBox(height: kSmallPadding),
               ],
             ),
           ),
@@ -100,13 +100,13 @@ class FlutterKnowledgeAnimatedText extends StatelessWidget {
         children: [
           if (!Responsive.isMobileLarge(context)) const FlutterCodedText(),
           if (!Responsive.isMobileLarge(context))
-            const SizedBox(width: kDefaultPadding / 2),
+            const SizedBox(width: kHalfPadding),
           const Text('I build '),
           Responsive.isMobile(context)
               ? const Expanded(child: AnimatedText())
               : const AnimatedText(),
           if (!Responsive.isMobileLarge(context))
-            const SizedBox(width: kDefaultPadding / 2),
+            const SizedBox(width: kHalfPadding),
           if (!Responsive.isMobileLarge(context)) const FlutterCodedText(),
         ],
       ),
