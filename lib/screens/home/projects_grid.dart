@@ -23,7 +23,7 @@ class UserProjectsGrid extends StatelessWidget {
         const Responsive(
           mobile: ProjectsGridView(
             crossAxisCount: 1,
-            childAspectRatio: 1.8,
+            childAspectRatio: 1.6,
           ),
           mobileLarge: ProjectsGridView(
             crossAxisCount: 2,
@@ -86,17 +86,21 @@ class ProjectCard extends StatelessWidget {
             project.title!,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
-            style: Theme.of(context).textTheme.subtitle2,
+            style: Theme.of(context).textTheme.subtitle1!.copyWith(),
           ),
           const Spacer(),
           Text(
             project.description!,
-            maxLines: Responsive.isMobileLarge(context) ? 3 : 4,
+            maxLines: Responsive.isMobileLarge(context)
+                ? 4
+                : Responsive.isDesktop(context)
+                    ? 5
+                    : 4,
             overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              height: 1.35,
-              fontSize: 10,
-            ),
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  height: kTextMediumHeightSpacing,
+                  fontSize: 14,
+                ),
           ),
           const Spacer(),
           TextButton(

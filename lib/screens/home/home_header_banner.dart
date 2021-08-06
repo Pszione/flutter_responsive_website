@@ -22,12 +22,15 @@ class HomeHeaderBanner extends StatelessWidget {
           ),
           Container(color: kDarkColor.withOpacity(0.60)), // Fader
           Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: kDefaultPadding * 1.5),
+            padding: EdgeInsets.symmetric(
+                horizontal: Responsive.isMobileLarge(context)
+                    ? kDefaultPadding / 2
+                    : kDefaultPadding * 1.5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                const SizedBox(height: kDefaultPadding),
                 Text(
                   'Discover my Amazing \nArt Space!',
                   // we expand the text if space available

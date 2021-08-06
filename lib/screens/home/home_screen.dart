@@ -17,9 +17,16 @@ class HomeScreen extends StatelessWidget {
       children: <Widget>[
         const HomeHeaderBanner(),
         // That's it for part I (above)
-        const HighlightNumbersIndicators(),
-        const UserProjectsGrid(),
-        const UserRecommendations(),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding / 2),
+          child: Column(
+            children: const [
+              HighlightNumbersIndicators(),
+              UserProjectsGrid(),
+              UserRecommendations(),
+            ],
+          ),
+        )
       ],
     );
   }
