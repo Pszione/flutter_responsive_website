@@ -24,7 +24,7 @@ class HomeHeaderBanner extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: Responsive.isMobileLarge(context)
-                    ? kHalfPadding
+                    ? kDefaultPadding
                     : kHugePadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

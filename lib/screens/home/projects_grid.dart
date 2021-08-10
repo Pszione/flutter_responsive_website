@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_responsive_website/models/project.dart';
+import 'package:flutter_responsive_website/screens/404/error_404_screen.dart';
 
 import '../../constants.dart';
 import '../../responsive.dart';
@@ -29,7 +30,7 @@ class UserProjectsGrid extends StatelessWidget {
             crossAxisCount: 2,
           ),
           tablet: ProjectsGridView(
-            childAspectRatio: 1.1,
+            childAspectRatio: 1.0,
           ),
           desktop: ProjectsGridView(),
         ),
@@ -42,7 +43,7 @@ class ProjectsGridView extends StatelessWidget {
   const ProjectsGridView({
     Key? key,
     this.crossAxisCount = 3,
-    this.childAspectRatio = 1.3,
+    this.childAspectRatio = 1.1,
   }) : super(key: key);
 
   final int crossAxisCount;
@@ -93,7 +94,7 @@ class ProjectCard extends StatelessWidget {
             project.description!,
             maxLines: Responsive.isMobileLarge(context)
                 ? 4
-                : Responsive.isDesktop(context)
+                : Responsive.isTablet(context)
                     ? 5
                     : 4,
             overflow: TextOverflow.ellipsis,
@@ -104,7 +105,11 @@ class ProjectCard extends StatelessWidget {
           ),
           const Spacer(),
           TextButton(
-            onPressed: () {},
+            //onPressed: () {},
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const Error404Screen())),
             child: const Text(
               'Read More>>',
               style: TextStyle(

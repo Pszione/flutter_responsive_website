@@ -22,7 +22,10 @@ class MainScreen extends StatelessWidget {
                   onPressed: () {
                     Scaffold.of(context).openDrawer();
                   },
-                  icon: const Icon(Icons.menu, size: 33),
+                  icon: const Padding(
+                    padding: EdgeInsets.only(left: kSmallPadding * 1.2),
+                    child: Icon(Icons.menu, size: 33),
+                  ),
                 ),
               ),
             ),
