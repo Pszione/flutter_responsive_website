@@ -68,6 +68,29 @@ class ErrorText extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
+        const SizedBox(height: kHugePadding),
+        ElevatedButton(
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+            backgroundColor: Colors.transparent,
+            shadowColor: Colors.transparent,
+            shape: const RoundedRectangleBorder(
+              side: BorderSide(
+                  color: Colors.black87, width: 2), // Color(0xFF293047)
+              borderRadius: BorderRadius.all(
+                Radius.circular(14),
+              ),
+            ),
+          ),
+          onPressed: () => Navigator.pop(context),
+          child: Text(
+            'Back to home'.toUpperCase(),
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+        )
       ],
     );
   }

@@ -64,6 +64,9 @@ class HomeHeaderBanner extends StatelessWidget {
                               vertical: kSmallPadding,
                             ),
                       backgroundColor: kPrimaryColor,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      ),
                     ),
                     child: Text(
                       Responsive.isDesktop(context) ? 'EXPLORE NOW' : 'MORE>>',

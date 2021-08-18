@@ -13,22 +13,7 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // we hide the appBar on desktop
-      appBar: Responsive.isDesktop(context)
-          ? null
-          : AppBar(
-              // backgroundColor: kBackgroundColor,
-              leading: Builder(
-                builder: (BuildContext context) => IconButton(
-                  onPressed: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  icon: const Padding(
-                    padding: EdgeInsets.only(left: kSmallPadding * 1.2),
-                    child: Icon(Icons.menu, size: 33),
-                  ),
-                ),
-              ),
-            ),
+      appBar: Responsive.isDesktop(context) ? null : const AppBarForMobile(),
       drawer: const SideMenuWithAvatar(),
       body: Center(
         child: Container(
@@ -44,7 +29,6 @@ class MainScreen extends StatelessWidget {
                   flex: 3, // 27%
                   child: SideMenuWithAvatar(),
                 ),
-              //const SizedBox(width: kDefaultPadding / 2.3),
               Expanded(
                 // Now this take (7/9=0.78) means 78% width
                 // flex: 7,
@@ -59,6 +43,33 @@ class MainScreen extends StatelessWidget {
                 ),
               ),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class AppBarForMobile extends StatelessWidget implements PreferredSizeWidget {
+  const AppBarForMobile({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Size get preferredSize => AppBar().preferredSize;
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      backgroundColor: kPrimaryColor, // kBackgroundColor,
+      leading: Builder(
+        builder: (BuildContext context) => IconButton(
+          onPressed: () {
+            Scaffold.of(context).openDrawer();
+          },
+          icon: const Padding(
+            padding: EdgeInsets.only(left: kSmallPadding * 1.2),
+            child: Icon(Icons.menu, size: 33),
           ),
         ),
       ),
