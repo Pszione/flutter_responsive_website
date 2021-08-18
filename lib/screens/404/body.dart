@@ -15,33 +15,19 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.symmetric(
-          horizontal: kHugePadding * 2, vertical: kHugePadding),
-      child: SizedBox(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            if (Responsive.isTablet(context)) // or desktop
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  //const ErrorText(),
-                  BicycleAnimation(),
-                ],
+      scrollDirection: Axis.vertical,
+      child: Container(
+          color: Colors.black45,
+          child: Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 90,
               ),
-            if (Responsive.isMobileLarge(context))
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  //const ErrorText(),
-                  BicycleAnimation(),
-                ],
-              )
-          ],
-        ),
-      ),
+              ErrorText(),
+              BicycleAnimation(),
+            ],
+          )),
     );
   }
 }
@@ -51,7 +37,39 @@ class ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: [
+        DefaultTextStyle(
+          style: Theme.of(context)
+              .textTheme
+              .headline5!
+              .copyWith(color: const Color(0xFF293047), height: 1.1),
+          child: const Text.rich(
+            TextSpan(
+              children: [
+                TextSpan(
+                  text: 'Oops!\n',
+                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                ),
+                TextSpan(
+                  text: '404\n',
+                  style: TextStyle(
+                    fontSize: 180,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -5,
+                  ),
+                ),
+                TextSpan(
+                  text: "We can't find the page that you're\n looking for.",
+                  style: TextStyle(height: 1.35),
+                ),
+              ],
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
+      ],
+    );
   }
 }
 
@@ -74,38 +92,33 @@ class BicycleAnimation extends StatelessWidget {
           // Bike
           Positioned(
             bottom: 0,
-            left: 130,
-            child: Container(
-              width: 30,
-              height: 30,
-              color: Colors.lightBlue,
+            left: 20, // left: 130,
+            child: SizedBox(
+              width: 270, // 310
+              height: 430, // 528
+              child: Stack(
+                children: [
+                  // 2 images
+                  Positioned(
+                    bottom: 7,
+                    left: 230,
+                    child: SvgPicture.asset(
+                      'assets/icons/_404/cycle_part_2.svg',
+                      width: 142,
+                      height: 142,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    // left: 120,
+                    child: SvgPicture.asset(
+                      'assets/icons/_404/cycle_part_1.svg',
+                      height: 287,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            // child: SizedBox(
-            //   width: 270, // 310
-            //   height: 430, // 528
-            //   child: Stack(
-            //     children: [
-            // 2 images
-            // Positioned(
-            //   bottom: 7,
-            //   left: 230,
-            //   child: SvgPicture.asset(
-            //     'assets/icons/_404/cycle_part_2.svg',
-            //     width: 142,
-            //     height: 142,
-            //   ),
-            // ),
-            // Positioned(
-            //   bottom: 0,
-            //   // left: 120,
-            //   child: SvgPicture.asset(
-            //     'assets/icons/_404/cycle_part_1.svg',
-            //     height: 287,
-            //   ),
-            // ),
-            //     ],
-            //   ),
-            // ),
           ),
         ],
       ),
