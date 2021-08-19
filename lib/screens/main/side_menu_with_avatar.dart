@@ -4,11 +4,27 @@ import 'package:flutter_responsive_website/components/animated_linear_progress_i
 import 'package:flutter_responsive_website/constants.dart';
 import 'package:flutter_responsive_website/screens/main/user_info_with_avatar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SideMenuWithAvatar extends StatelessWidget {
   const SideMenuWithAvatar({
     Key? key,
   }) : super(key: key);
+
+  static void launchURL(String url) async {
+    //const url = 'https://flutter.io';
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceWebView: false,
+        forceSafariVC: true, // to open URL in default browser of the phone
+        enableJavaScript: true,
+        webOnlyWindowName: 'WebView Testing',
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,19 +124,22 @@ class SocialLinks extends StatelessWidget {
         children: [
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () => SideMenuWithAvatar.launchURL(
+                'https://www.linkedin.com/in/pedro-santos-4000/'),
             icon: SvgPicture.asset(
               'assets/icons/linkedin.svg',
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () =>
+                SideMenuWithAvatar.launchURL('https://github.com/Pszione'),
             icon: SvgPicture.asset(
               'assets/icons/github.svg',
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () => SideMenuWithAvatar.launchURL(
+                'https://twitter.com/humanidade4000'),
             icon: SvgPicture.asset(
               'assets/icons/twitter.svg',
             ),
