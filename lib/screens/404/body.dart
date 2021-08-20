@@ -20,7 +20,6 @@ class _BodyState extends State<Body> {
         width: double.infinity,
         height: 600,
         child: Stack(
-          //mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Center(
               child: Image.asset(
@@ -33,14 +32,13 @@ class _BodyState extends State<Body> {
             //   fit: BoxFit.fitHeight,
             //   color: const Color(0xFFFFB800),
             // ),
-            Column(
-              children: const [
-                SizedBox(
-                  width: double.infinity,
-                  height: 90,
-                ),
-                ErrorText(),
-              ],
+            Center(
+              child: Column(
+                children: const [
+                  SizedBox(height: 90),
+                  ErrorText(),
+                ],
+              ),
             ),
           ],
         ),
@@ -123,50 +121,6 @@ class BicycleAnimation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: Responsive.isMobileLarge(context) ? 260 : 641,
-      height: Responsive.isMobileLarge(context) ? 410 : 310,
-      child: Stack(
-        children: [
-          // Shadow
-          Positioned(
-            top: 0,
-            left: 0,
-            child: SvgPicture.asset("assets/icons/_404/Group 64.svg"),
-          ),
-          // Bike
-          Positioned(
-            bottom: 0,
-            left: 20, // left: 130,
-            child: SizedBox(
-              width: 270, // 310
-              height: 430, // 528
-              child: Stack(
-                children: [
-                  // 2 images
-                  Positioned(
-                    bottom: 7,
-                    left: 230,
-                    child: SvgPicture.asset(
-                      'assets/icons/_404/cycle_part_2.svg',
-                      width: 142,
-                      height: 142,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    // left: 120,
-                    child: SvgPicture.asset(
-                      'assets/icons/_404/cycle_part_1.svg',
-                      height: 287,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+    return SizedBox();
   }
 }
