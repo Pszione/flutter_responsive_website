@@ -61,22 +61,25 @@ class ErrorText extends StatelessWidget {
               .textTheme
               .headline5!
               .copyWith(color: const Color(0xFF293047), height: 1.1),
-          child: const Text.rich(
+          child: Text.rich(
             TextSpan(
               children: [
                 TextSpan(
                   text: 'Oops!\n',
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: Responsive.isDesktop(context) ? 40 : 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 TextSpan(
                   text: '404\n',
                   style: TextStyle(
-                    fontSize: 180,
+                    fontSize: Responsive.isDesktop(context) ? 180 : 120,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -5,
                   ),
                 ),
-                TextSpan(
+                const TextSpan(
                   text: "We can't find the page that you're\n looking for.",
                   style: TextStyle(height: 1.35),
                 ),
@@ -88,7 +91,9 @@ class ErrorText extends StatelessWidget {
         const SizedBox(height: kHugePadding),
         ElevatedButton(
           style: TextButton.styleFrom(
-            padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+            padding: Responsive.isDesktop(context)
+                ? const EdgeInsets.symmetric(horizontal: 50, vertical: 25)
+                : const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
             shape: const RoundedRectangleBorder(
