@@ -17,17 +17,34 @@ class _BodyState extends State<Body> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
-          color: Colors.black45,
-          child: Column(
-            children: [
-              SizedBox(
-                width: double.infinity,
-                height: 90,
+        width: double.infinity,
+        height: 600,
+        child: Stack(
+          //mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Center(
+              child: Image.asset(
+                "assets/icons/_404/Group 64.png",
+                fit: BoxFit.fitHeight,
               ),
-              ErrorText(),
-              BicycleAnimation(),
-            ],
-          )),
+            ),
+            // SvgPicture.asset(
+            //   'assets/icons/_404/Group 64.svg',
+            //   fit: BoxFit.fitHeight,
+            //   color: const Color(0xFFFFB800),
+            // ),
+            Column(
+              children: const [
+                SizedBox(
+                  width: double.infinity,
+                  height: 90,
+                ),
+                ErrorText(),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
