@@ -27,12 +27,33 @@ class _BodyState extends State<Body> {
   }
 }
 
-class _404ErrorScreenAnimated_Version02 extends StatelessWidget {
-  const _404ErrorScreenAnimated_Version02({
+class _404ErrorScreenAnimated_Version02 extends StatefulWidget {
+  _404ErrorScreenAnimated_Version02({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<_404ErrorScreenAnimated_Version02> createState() =>
+      _404ErrorScreenAnimated_Version02State();
+}
+
+class _404ErrorScreenAnimated_Version02State
+    extends State<_404ErrorScreenAnimated_Version02> {
   final Color yellow = const Color(0xFFFFB800);
+
+  bool startedAnimation = false;
+  final Duration duration = const Duration(milliseconds: 500);
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(const Duration(milliseconds: 200), () {
+      // will trigger our animation after 100 millis
+      setState(() {
+        startedAnimation = true;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,25 +74,32 @@ class _404ErrorScreenAnimated_Version02 extends StatelessWidget {
                   //
                   //
                   // Shadow
-                  Positioned(
+                  AnimatedPositioned(
                     top: 0,
-                    left: 0,
-                    child: SvgPicture.asset(
-                      'assets/icons/_404/Group 64.svg',
-                      height: 260.3,
-                      color: yellow,
+                    left: startedAnimation ? 0 : 50,
+                    duration: duration,
+                    child: AnimatedOpacity(
+                      opacity: startedAnimation ? 1 : 0.3,
+                      duration: duration,
+                      child: SvgPicture.asset(
+                        'assets/icons/_404/Group 64.svg',
+                        height: 260.3,
+                        color: yellow,
+                      ),
                     ),
                   ),
                   //
                   //
                   // Cycle
-                  Positioned(
+                  AnimatedPositioned(
                     bottom: 0,
-                    left: 130,
+                    left: startedAnimation ? 130 : 0, // opposite of the shadow
+                    duration: duration,
                     child: SizedBox(
                       height: 310,
                       width: 528,
                       child: Stack(
+                        overflow: Overflow.visible,
                         children: [
                           Positioned(
                             bottom: 7,
