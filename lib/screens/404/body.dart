@@ -17,32 +17,128 @@ class _BodyState extends State<Body> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 30),
         width: double.infinity,
-        height: 600,
-        child: Stack(
+        height: 600, // MediaQuery.of(context).size.height,
+        //child: _404ErrorScreenVersion01(),
+        child: _404ErrorScreenAnimated_Version02(),
+      ),
+    );
+  }
+}
+
+class _404ErrorScreenAnimated_Version02 extends StatelessWidget {
+  const _404ErrorScreenAnimated_Version02({
+    Key? key,
+  }) : super(key: key);
+
+  final Color yellow = const Color(0xFFFFB800);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Center(
-              child: Image.asset(
-                "assets/icons/_404/Group 64.png",
-                fit: BoxFit.fitHeight,
-              ),
-            ),
-            // SvgPicture.asset(
-            //   'assets/icons/_404/Group 64.svg',
-            //   fit: BoxFit.fitHeight,
-            //   color: const Color(0xFFFFB800),
-            // ),
-            Center(
-              child: Column(
-                children: const [
-                  SizedBox(height: 90),
-                  ErrorText(),
+            // 404 text
+            const Center(child: ErrorText()),
+            // Bicycle
+            SizedBox(
+              width: 641,
+              height: 310,
+              child: Stack(
+                children: [
+                  //
+                  //
+                  // Shadow
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    child: SvgPicture.asset(
+                      'assets/icons/_404/Group 64.svg',
+                      height: 260.3,
+                      color: yellow,
+                    ),
+                  ),
+                  //
+                  //
+                  // Cycle
+                  Positioned(
+                    bottom: 0,
+                    left: 130,
+                    child: SizedBox(
+                      height: 310,
+                      width: 528,
+                      child: Stack(
+                        children: [
+                          Positioned(
+                            bottom: 7,
+                            left: 230,
+                            child: SvgPicture.asset(
+                                'assets/icons/_404/cycle_part_2.svg',
+                                height: 142),
+                          ),
+                          Positioned(
+                            bottom: 0,
+                            // left: 120,
+                            child: SvgPicture.asset(
+                                'assets/icons/_404/cycle_part_1.svg',
+                                height: 287),
+                          ),
+                          Positioned(
+                            left: 0,
+                            bottom: 0,
+                            child: SvgPicture.asset(
+                              'assets/icons/_404/line.svg',
+                              height: 6.4,
+                              color: yellow,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ],
         ),
-      ),
+      ],
+    );
+  }
+}
+
+class _404ErrorScreenVersion01 extends StatelessWidget {
+  const _404ErrorScreenVersion01({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Center(
+          child: Image.asset(
+            "assets/icons/_404/Group 64.png",
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+        // SvgPicture.asset(
+        //   'assets/icons/_404/Group 64.svg',
+        //   fit: BoxFit.fitHeight,
+        //   color: const Color(0xFFFFB800),
+        // ),
+        Center(
+          child: Column(
+            children: const [
+              SizedBox(height: 90),
+              ErrorText(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -113,14 +209,5 @@ class ErrorText extends StatelessWidget {
         )
       ],
     );
-  }
-}
-
-class BicycleAnimation extends StatelessWidget {
-  const BicycleAnimation({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox();
   }
 }
