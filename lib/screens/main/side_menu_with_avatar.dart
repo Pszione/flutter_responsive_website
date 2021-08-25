@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_responsive_website/components/animated_circular_progress_indicator.dart';
 import 'package:flutter_responsive_website/components/animated_linear_progress_indicator.dart';
 import 'package:flutter_responsive_website/constants.dart';
 import 'package:flutter_responsive_website/screens/main/user_info_with_avatar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
+
+import '../../notification_api.dart';
 
 class SideMenuWithAvatar extends StatelessWidget {
   const SideMenuWithAvatar({
@@ -85,7 +88,10 @@ class DownloadCurriculum extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () => NotificationApi.showNotification(
+        title: 'Here is your CV!',
+        body: 'Download finished',
+      ),
       child: FittedBox(
         child: Row(
           children: [
@@ -111,8 +117,6 @@ class SocialLinks extends StatelessWidget {
   const SocialLinks({
     Key? key,
   }) : super(key: key);
-
-  // TODO: make the links work
 
   @override
   Widget build(BuildContext context) {
